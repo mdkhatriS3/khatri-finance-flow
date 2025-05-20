@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 interface AnimateOnScrollProps {
   threshold?: number;
   rootMargin?: string;
+  resetOnExit?: boolean;
 }
 
 export const useAnimateOnScroll = ({ 
   threshold = 0.1,
-  rootMargin = "0px"
+  rootMargin = "0px",
+  resetOnExit = false
 }: AnimateOnScrollProps = {}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
@@ -16,8 +18,11 @@ export const useAnimateOnScroll = ({
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
+        if (entry.isIntersecting) {
           setIsInView(true);
+        } else if (resetOnExit) {
+          // Reset animation when element is out of view and reset is enabled
+          setIsInView(false);
         }
       },
       {
@@ -37,7 +42,7 @@ export const useAnimateOnScroll = ({
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold, rootMargin, isInView]);
+  }, [threshold, rootMargin, resetOnExit]);
   
   return { ref, isInView };
 };
