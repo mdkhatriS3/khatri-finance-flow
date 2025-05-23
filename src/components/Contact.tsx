@@ -4,8 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Linkedin } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,8 +19,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-20 relative overflow-hidden">
+      {/* Background gradient effects */}
+      <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+      <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Contact Me</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -88,15 +93,17 @@ const Contact = () => {
             <div>
               <h3 className="text-xl font-semibold mb-4">Connect</h3>
               <div className="flex gap-4">
-                <a 
-                  href="#" 
-                  className="p-3 bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors"
+                <motion.a 
+                  href="https://www.linkedin.com/in/murlidhar-k-a546858?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#0A66C2] rounded-full text-white hover:bg-[#004182] transition-colors hover:scale-110 transform duration-300"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                   aria-label="LinkedIn"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                  </svg>
-                </a>
+                  <Linkedin className="h-6 w-6" />
+                </motion.a>
               </div>
             </div>
           </div>
