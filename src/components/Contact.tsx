@@ -1,21 +1,54 @@
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, Linkedin } from "lucide-react";
+import { Mail, Phone, Linkedin, Loader2 } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would process the form data here
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    setIsSubmitting(true);
+    
+    if (!formRef.current) return;
+
+    // EmailJS configuration with your specific keys
+    emailjs.sendForm(
+      'service_7pepx2b',
+      'template_9puc234',
+      formRef.current,
+      'Y-bZ5tzRz2XALqOxl'
+    )
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        toast({
+          title: "Message Sent",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        // Reset form
+        if (formRef.current) {
+          formRef.current.reset();
+        }
+      })
+      .catch((error) => {
+        console.error('Email sending failed:', error.text);
+        toast({
+          title: "Message Failed",
+          description: "There was an error sending your message. Please try again.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -32,28 +65,42 @@ const Contact = () => {
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold mb-6">Send a Message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your Name" required />
+                  <Label htmlFor="user_name">Name</Label>
+                  <Input id="user_name" name="user_name" placeholder="Your Name" required />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" required />
+                  <Label htmlFor="user_email">Email</Label>
+                  <Input id="user_email" name="user_email" type="email" placeholder="your.email@example.com" required />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <textarea 
+                  <Textarea 
                     id="message" 
-                    className="flex min-h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" 
+                    name="message"
+                    className="min-h-32"
                     placeholder="Your message..."
                     required
                   />
                 </div>
                 
-                <Button type="submit" className="w-full">Send Message</Button>
+                <Button 
+                  type="submit" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
+                </Button>
               </form>
             </CardContent>
           </Card>
