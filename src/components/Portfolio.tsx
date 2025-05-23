@@ -54,7 +54,7 @@ const Portfolio = () => {
       category: "integration",
       description: "Designed microservice architecture to integrate cloud solutions with on-premise SAP ECC systems.",
       tags: ["Cloud", "Microservices", "Integration"],
-      image: "https://www.shutterstock.com/image-illustration/platform-engineering-concept-practice-designing-workflows-2206612185"
+      image: "https://www.freepik.com/free-vector/file-transfer-process-processing-big-data-server-room-data-center_2910190.htm#fromView=keyword&page=1&position=5&uuid=cf710a32-c8e4-420e-9da3-631721dc47d7&query=Microservices+Architecture"
     },
     {
       id: 6,
@@ -62,7 +62,7 @@ const Portfolio = () => {
       category: "rollout",
       description: "Led global rollout of Financial Supply Chain Management across multiple regions and systems.",
       tags: ["FSCM", "Global Rollout", "Finance"],
-      image: "https://www.istockphoto.com/photo/businessman-hand-holding-magnifying-glass-focusing-standard-quality-control-gm1954820499-557445981"
+      image: "https://www.freepik.com/free-vector/hand-drawn-international-trade-with-ship_20059364.htm#fromView=search&page=1&position=0&uuid=344c987a-e6c3-4c59-8523-092d2b3da11c&query=financial+Supply+Chain+Management"
     },
     {
       id: 7,
@@ -78,7 +78,7 @@ const Portfolio = () => {
       category: "rollout",
       description: "Managed SAP rollout with localized tax compliance for India GST and Russian regulatory requirements.",
       tags: ["India", "Russia", "Tax Compliance"],
-      image: "https://www.freeimages.com/photo/chasing-the-markets-1241622"
+      image: "https://www.freepik.com/free-photo/closeup-economist-using-calculator-while-going-through-bills-taxes-office_25751795.htm#fromView=keyword&page=1&position=10&uuid=657191f6-9847-41dd-92a9-df800ee2b479&query=Gst"
     },
     {
       id: 9,
@@ -86,7 +86,7 @@ const Portfolio = () => {
       category: "upgrade",
       description: "Led Vertex tax system upgrade project and redesigned integration architecture for improved performance.",
       tags: ["Vertex", "Tax", "Upgrade"],
-      image: "https://www.vecteezy.com/photo/56364306-colorful-geometric-paper-triangles-arranged-in-a-modern-design-creating-a-dynamic-visual-effect"
+      image: "https://www.freepik.com/free-ai-image/man-architect-working-project-with-vr-glasses-new-technologies-3d_132856264.htm#fromView=keyword&page=1&position=7&uuid=e6e28f5c-4ebc-4b56-8dc9-c0ba2615b8a7&query=Software+Architecture"
     }
   ];
   

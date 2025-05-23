@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useAnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const Hero = () => {
   const { ref: heroRef, isInView: heroIsInView } = useAnimateOnScroll();
@@ -97,16 +99,20 @@ const Hero = () => {
             className="flex-1 flex justify-center md:justify-end"
           >
             <div className="relative">
-              {/* Image container with modern design */}
+              {/* Image container with professional photo */}
               <motion.div 
                 initial={{ rotate: -5 }}
                 animate={{ rotate: 5 }}
                 transition={{ repeat: Infinity, duration: 6, repeatType: "reverse" }}
                 className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white/10 shadow-xl hover:scale-105 transition-transform duration-300"
               >
-                <div className="w-full h-full bg-gradient-to-br from-professional-lightblue/30 to-white/5 flex items-center justify-center">
-                  <span className="text-white/80">Professional Photo</span>
-                </div>
+                <Avatar className="w-full h-full">
+                  <AvatarImage 
+                    src="https://ik.imagekit.io/wfsl3d5fv/Photo%20Murlidhar.jpg?updatedAt=1747757486815" 
+                    alt="Murlidhar Khatri" 
+                    className="object-cover w-full h-full"
+                  />
+                </Avatar>
               </motion.div>
               {/* Decorative circles */}
               <motion.div 
