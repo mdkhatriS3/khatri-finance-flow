@@ -46,7 +46,8 @@ const Portfolio = () => {
       category: "implementation",
       description: "Set up e-reporting functionality to meet local regulatory requirements in Egypt and Romania.",
       tags: ["Regulatory", "Reporting", "Localization"],
-      image: "https://cdn.pixabay.com/photo/2015/05/10/21/28/accounting-761599_1280.jpg"
+      image: "https://cdn.pixabay.com/photo/2015/05/10/21/28/accounting-761599_1280.jpg",
+      link: "https://community.sap.com/t5/financial-management-q-a/edocument-high-level-process-in-sap/qaq-p/14089501"
     },
     {
       id: 5,
@@ -62,7 +63,8 @@ const Portfolio = () => {
       category: "rollout",
       description: "Led global rollout of Financial Supply Chain Management across multiple regions and systems.",
       tags: ["FSCM", "Global Rollout", "Finance"],
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800"
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800",
+      link: "https://community.sap.com/t5/financial-management-blog-posts-by-members/fscm-collection-and-dispute-management-data-model/ba-p/14091943"
     },
     {
       id: 7,
@@ -86,7 +88,8 @@ const Portfolio = () => {
       category: "upgrade",
       description: "Led Vertex tax system upgrade project and redesigned integration architecture for improved performance.",
       tags: ["Vertex", "Tax", "Upgrade"],
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800"
+      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800",
+      link: "https://google.com"
     }
   ];
   
@@ -95,7 +98,7 @@ const Portfolio = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="py-20 relative overflow-hidden">
+    <section id="portfolio" className="py-20 overflow-hidden">
       {/* Background gradient effects */}
       <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
       <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
@@ -106,13 +109,14 @@ const Portfolio = () => {
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <Button
-              key={category.id}
-              variant={filter === category.id ? "default" : "outline"}
-              onClick={() => setFilter(category.id)}
-              className="min-w-[120px]"
-            >
-              {category.name}
-            </Button>
+            key={category.id}
+            variant={filter === category.id ? "default" : "outline"}
+            onClick={() => setFilter(category.id)}
+            className="min-w-[120px] text-black" // Add text color here
+          >
+            {category.name}
+          </Button>
+          
           ))}
         </div>
         
@@ -146,11 +150,11 @@ const Portfolio = () => {
                     ))}
                   </div>
                 </CardContent>
-                <CardFooter className="px-6 py-4 bg-gray-50 border-t">
+                {(project.id == 1 || project.id == 2 || project.id == 3 || project.id == 5 || project.id == 7 || project.id == 8) ? null : <CardFooter className="px-6 py-4 bg-gray-50 border-t">
                   <Button variant="outline" size="sm" className="w-full">
-                    View Details
+                    <a href={project.link} target="_blank">View Details</a>
                   </Button>
-                </CardFooter>
+                </CardFooter>}
               </Card>
             </motion.div>
           ))}

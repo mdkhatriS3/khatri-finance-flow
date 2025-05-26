@@ -52,7 +52,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-20 overflow-hidden">
       {/* Background gradient effects */}
       <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
       <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"></div>
@@ -109,7 +109,7 @@ const Contact = () => {
             <div className="mb-12 max-w-md">
               <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
               <p className="text-gray-600 mb-8">
-                I'm always open to discussing new projects, opportunities in SAP finance implementation, or how I can help with your business transformation needs.
+                I'm always open to discussing new projects, opportunities in SAP Implementation, or how I can help with your business transformation needs.
               </p>
               
               <div className="space-y-6">

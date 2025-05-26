@@ -6,26 +6,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const isMobile = useIsMobile();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -40,9 +25,7 @@ const Navigation = () => {
   return (
     <header 
       className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-        scrolled 
-          ? "bg-white/90 shadow-sm" 
-          : "bg-white/50 border-transparent"
+        "bg-white/90 shadow-sm" 
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
