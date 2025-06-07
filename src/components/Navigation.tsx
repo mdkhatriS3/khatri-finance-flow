@@ -11,7 +11,6 @@ const Navigation = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "#about" },
@@ -21,6 +20,16 @@ const Navigation = () => {
     { name: "Experience", href: "#experience" },
     { name: "Contact", href: "#contact" },
   ];
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <header 
@@ -39,36 +48,34 @@ const Navigation = () => {
           
           {isMobile ? (
             <>
-              <button 
-                onClick={toggleMenu} 
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-              
+             <button
+              onClick={toggleMenu}
+              className="fixed top-5 right-5 z-[999] text-gray-600 hover:text-gray-900"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
               {isOpen && (
-                <div 
-                  className="fixed inset-0 top-16 bg-white z-40 p-5 animate-fade-in"
-                >
-                  <ul className="flex flex-col gap-6">
-                    {navLinks.map((link, index) => (
-                      <li 
-                        key={link.name} 
-                        style={{ animationDelay: `${index * 50}ms` }}
-                        className="animate-fade-in"
-                      >
-                        <a
-                          href={link.href}
-                          onClick={closeMenu}
-                          className="text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors block p-2 hover:bg-gray-50 rounded-md"
-                        >
-                          {link.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+  <div className="fixed inset-0 bg-white z-50 p-5 h-screen overflow-y-auto">
+    <ul className="flex flex-col gap-6 h-full justify-center">
+      {navLinks.map((link, index) => (
+        <li key={link.name} style={{ animationDelay: `${index * 50}ms` }} className="animate-fade-in">
+          <a
+            href={link.href}
+            onClick={closeMenu}
+            className="text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors block"
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
+
+              
             </>
           ) : (
             <ul className="flex items-center gap-8">

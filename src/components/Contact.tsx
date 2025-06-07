@@ -108,7 +108,7 @@ const Contact = () => {
           <div className="flex flex-col justify-center">
             <div className="mb-12 max-w-md">
               <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-              <p className="text-gray-600 mb-8">
+              <p className="text-blue-600 mb-8">
                 I'm always open to discussing new projects, opportunities in SAP Implementation, or how I can help with your business transformation needs.
               </p>
               
@@ -119,7 +119,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <a href="mailto:murlidhar.khatri@s3infotech.in" className="text-sm text-gray-600 hover:text-primary">
+                    <a href="mailto:murlidhar.khatri@s3infotech.in" className="text-sm text-blue-600 hover:text-primary">
                       murlidhar.khatri@s3infotech.in
                     </a>
                   </div>
@@ -131,7 +131,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Phone</h4>
-                    <p className="text-sm text-gray-600">Contact via email for phone details</p>
+                    <p className="text-sm text-blue-600">Contact via email for phone details</p>
                   </div>
                 </div>
               </div>
